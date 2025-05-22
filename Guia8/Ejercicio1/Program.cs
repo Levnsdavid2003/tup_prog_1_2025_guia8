@@ -60,14 +60,34 @@ namespace Ejercicio1
 
             return eleccion;
         }
-        static void SolicitarPantallaIngresarNumero()
+        static void MostrarPantallaIngresarNumero()
         {
             Console.Clear();
-            Console.WriteLine("\tSolicitud de Ingreso de Número\n");
+            Console.WriteLine("Solicitud de Ingreso de Número\n");
             Console.WriteLine("Ingrese un número:");
             int valor = Convert.ToInt32(Console.ReadLine());
             RegistrarValor(valor);
         }
+
+        static void MostrarPantallaSolicitarVariosNumeros()
+        {
+            int num = 0;
+            int cantidad = 0;
+            Console.Clear();
+            Console.WriteLine("Solicitud de Ingreso de Varios Numeros\n");
+            Console.WriteLine("Escriba la cantidad de numeros:");
+            cantidad = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= cantidad; i++)
+            {
+                Console.WriteLine("\nIngrese el número {0} :", i);
+                num = Convert.ToInt32(Console.ReadLine());
+                RegistrarValor(num);
+            }
+            Console.WriteLine("Presione cualquier tecla para salir.");
+            Console.ReadKey();
+        }
+
         static void MostrarMaximoyMinimo()
         {
             Console.Clear();
@@ -78,12 +98,34 @@ namespace Ejercicio1
             Console.ReadKey();
         }
 
+        static void MostrarPantallaPromedio()
+        {
+            Console.Clear();
+            Console.WriteLine("Promedio de los números\n");
+            Console.WriteLine("El promedio del/los numeros es: {0} \n\n", CalcularPromedio());
+            Console.WriteLine("Presione cualquier tecla para salir.");
+            Console.ReadKey();
+        }
+
+        static void MostrarPantallaCantidad()
+        {
+            Console.Clear();
+            Console.WriteLine("Cantidad de números ingresados\n");
+            Console.WriteLine("La cantidad de números procesados son: {0} \n\n", contador );
+            Console.WriteLine("Presione cualquier tecla para salir.");
+            Console.ReadKey();
+        }
+
         static void ReiniciarValores()
         {
             contador = 0;
             acumulador = 0;
             Maximo = 0;
             Minimo = 0;
+            Console.Clear();
+            Console.WriteLine("Valores reiniciados\n\n");
+            Console.WriteLine("Presione cualquier tecla para salir.");
+            Console.ReadKey();
         }
 
         #endregion
@@ -99,16 +141,19 @@ namespace Ejercicio1
                 switch (op)
                 {
                     case 1:
-                        SolicitarPantallaIngresarNumero();
+                        MostrarPantallaIngresarNumero();
                         break;
                     case 2:
+                        MostrarPantallaSolicitarVariosNumeros();
                         break;
                     case 3:
                         MostrarMaximoyMinimo();
                         break;
                     case 4:
+                        MostrarPantallaPromedio();
                         break;
                     case 5:
+                        MostrarPantallaCantidad();
                         break;
                     case 6:
                         ReiniciarValores();
@@ -119,65 +164,6 @@ namespace Ejercicio1
                 }
                 op = MostrarPantallaSolicitarOpcionMenu();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //#region Inicializar valores
-            //int cantidad;
-
-            //contador = 0;
-            //acumulador = 0;
-            //#endregion
-
-            //#region Leer cantidad de números a ingresar
-            //Console.WriteLine("Ingrese la cantidad de numeros a entrar.");
-            //cantidad = Convert.ToInt32(Console.ReadLine());
-            //#endregion
-
-            //#region Iteración de valores
-            //for (int n = 0; n < cantidad; n++)
-            //{
-            //    #region Solicitar ingreso
-            //    Console.WriteLine($"Ingrese el número {n + 1}");
-            //    int numero = Convert.ToInt32(Console.ReadLine());
-            //    RegistrarValor(numero);
-            //    #endregion
-
-            //    #region Verificar mayor y menor
-            //    if (n == 0 || Maximo < numero)
-            //    {
-            //        Maximo = numero;
-            //    }
-            //    if (n == 0 || Minimo > numero)
-            //    {
-            //        Minimo = numero;
-            //    }
-            //    #endregion
-            //    contador++;
-            //}
-            //#endregion
-
-            //#region Mostrar Resultados
-            //if (contador > 0)
-            //{
-            //    Console.WriteLine($"El promedio de los numeros es: {CalcularPromedio()}");
-            //    Console.WriteLine($"El mayor es {Maximo}, el menor es {Minimo}");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("No se ingresó ningun valor");
-            //}
-            //#endregion
         }
     }
 }
